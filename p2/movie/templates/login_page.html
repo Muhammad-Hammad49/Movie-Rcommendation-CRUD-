@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyETR1Jj46M25H3rf6LJLlACG5Uq3s8Fgo" crossorigin="anonymous">
+    <style>
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            margin-right: 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+            color: #6c757d;
+        }
+
+        a {
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% comment %} <nav class="navbar">
+        <a href="/movie-list/">Home</a>
+        <a href="/movie/">Add Movie</a>
+        <button class="btn btn-outline-light" >Logout</button>
+    </nav> {% endcomment %}
+    <div class="container">
+        <h2>User Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            {% if messages %}
+                <div class="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <p>If you don't have an account, <a href="/register/">Sign Up</a>.</p>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js scripts (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js" integrity="sha384-GLhlTQ8iVo7S13HvG8t9Raxu6F5w5SfY1xZ2XcbvMOqnZuEDZ3y3fWEna5J6fc" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyETR1Jj46M25H3rf6LJLlACG5Uq3s8Fgo" crossorigin="anonymous"></script>
+</body>
+</html>

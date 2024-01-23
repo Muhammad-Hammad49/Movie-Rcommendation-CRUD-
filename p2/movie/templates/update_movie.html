@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            margin-right: 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/movie-list/">Home</a>
+        <a href="/movie/">Add Movie</a>
+        <a href='/logout/' class="btn btn-outline-light" >Logout</a>
+    </nav>
+    <form id="movieForm" method="post" enctype= "multipart/form-data">
+        {% csrf_token %}
+        <h1>Update Movie</h1>
+        <label for="movieName">Movie Name:</label>
+        <input type="text" id="movieName" value="{{movie.movie_name}}" name="movie_name" required>
+
+        <label for="movieDescription">Movie Description:</label>
+        <textarea id="movieDescription" value="" name="movie_desc" required>{{movie.movie_desc}}</textarea>
+
+        <label for="movieImage">Movie Image:</label>
+        <input type="file" id="movieImage" name="movie_img" >
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
